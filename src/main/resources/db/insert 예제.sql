@@ -1,4 +1,4 @@
---insert ¹®ÀÌ ÀúÀåµÈ sql¹® 
+ï»¿--insert ë¬¸ì´ ì €ì¥ëœ sqlë¬¸ 
 select * from HomeList;
 select * from Categorie order by use_ck desc;
 select * from addInfo;  
@@ -6,12 +6,12 @@ select * from addContent;
 select * from userInfo;
 
 insert into Categorie (CATE_NO,CATE_NAME,CATE_INFO, USE_ck)
-values(Categorie_seq.nextval,'µµ¼­','Áı¿¡ÀÖ´Â Ã¥µéÀÔ´Ï´Ù.','n');
+values(Categorie_seq.nextval,'ë„ì„œ','ì§‘ì—ìˆëŠ” ì±…ë“¤ì…ë‹ˆë‹¤.','n');
 
 insert into HomeList(H_NO,H_NAME,H_PRICE,H_GETDATE,MAKER,DEL_CK,CATE_NO)
-values (HomeList_seq.nextval,'´«¸¶»õ',17000,sysdate,'ÀÌ¿µµµ','x',9);
+values (HomeList_seq.nextval,'ëˆˆë§ˆìƒˆ',17000,sysdate,'ì´ì˜ë„','x',9);
 insert into HomeList(H_NO,H_NAME,H_PRICE,H_GETDATE,MAKER,DEL_CK,CATE_NO)
-values (HomeList_seq.nextval,'ÇÇ¸¶»õ',20000,sysdate,'ÀÌ¿µµµ','x',9);
+values (HomeList_seq.nextval,'í”¼ë§ˆìƒˆ',20000,sysdate,'ì´ì˜ë„','x',9);
 
 commit;
 

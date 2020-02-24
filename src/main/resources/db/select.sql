@@ -1,4 +1,4 @@
-drop table HomeList;
+﻿drop table HomeList;
 drop table Categorie; 
 drop table addInfo;
 drop table addContent;

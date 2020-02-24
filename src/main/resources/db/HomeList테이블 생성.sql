@@ -1,4 +1,4 @@
--- ¹°Ç°¸®½ºÆ®
+ï»¿-- ë¬¼í’ˆë¦¬ìŠ¤íŠ¸
 CREATE TABLE HomeList (
 		H_No INTEGER NOT NULL,
 		H_Name VARCHAR(200) NOT NULL,
@@ -9,30 +9,30 @@ CREATE TABLE HomeList (
 		CATE_NO INTEGER NULL
 );
 
--- ¹°Ç°¸®½ºÆ®
+-- ë¬¼í’ˆë¦¬ìŠ¤íŠ¸
 ALTER TABLE HomeList
-	ADD CONSTRAINT PK_HomeList -- ¹°Ç°¸®½ºÆ® ±âº»Å°
+	ADD CONSTRAINT PK_HomeList -- ë¬¼í’ˆë¦¬ìŠ¤íŠ¸ ê¸°ë³¸í‚¤
 	PRIMARY KEY (
-		H_No -- ¹°Ç° ¹øÈ£
+		H_No -- ë¬¼í’ˆ ë²ˆí˜¸
 	);
 
--- Ä«Å×°í¸®
+-- ì¹´í…Œê³ ë¦¬
 CREATE TABLE Categorie (
 		cate_No INTEGER NOT NULL,
 		cate_Name VARCHAR (100) NOT NULL,
 		cate_Info VARCHAR(400) NULL
 );
 
--- Ä«Å×°í¸®
+-- ì¹´í…Œê³ ë¦¬
 ALTER TABLE Categorie
-	ADD CONSTRAINT PK_Categorie -- Ä«Å×°í¸® ±âº»Å°
+	ADD CONSTRAINT PK_Categorie -- ì¹´í…Œê³ ë¦¬ ê¸°ë³¸í‚¤
 	PRIMARY KEY (
-		CKTE_NO -- Ä«Å×°í¸® ¹øÈ£
+		CKTE_NO -- ì¹´í…Œê³ ë¦¬ ë²ˆí˜¸
 	);
-alter table Categorie add use_ck varchar(4); --»ç¿ë¿©ºÎ Ã¼Å©..
-ALTER TABLE Categorie MODIFY (use_ck not null); --»ç¿ë¿©ºÎ Ã¼Å© ÇÊ¼ö
+alter table Categorie add use_ck varchar(4); --ì‚¬ìš©ì—¬ë¶€ ì²´í¬..
+ALTER TABLE Categorie MODIFY (use_ck not null); --ì‚¬ìš©ì—¬ë¶€ ì²´í¬ í•„ìˆ˜
 
--- Ãß°¡ Á¤º¸
+-- ì¶”ê°€ ì •ë³´
 CREATE TABLE addInfo (
 		CKTE_NO INTEGER NOT NULL,
 		add_Info_No INTEGER NOT NULL,
@@ -40,15 +40,15 @@ CREATE TABLE addInfo (
 		add_Info_Info VARCHAR(500) NULL
 );
 
--- Ãß°¡ Á¤º¸
+-- ì¶”ê°€ ì •ë³´
 ALTER TABLE addInfo
-	ADD CONSTRAINT PK_addInfo -- Ãß°¡ Á¤º¸ ±âº»Å°
+	ADD CONSTRAINT PK_addInfo -- ì¶”ê°€ ì •ë³´ ê¸°ë³¸í‚¤
 	PRIMARY KEY (
-		CKTENO,    -- Ä«Å×°í¸® ¹øÈ£
-		add_Info_No  -- Ãß°¡Á¤º¸ ¹øÈ£
+		CKTENO,    -- ì¹´í…Œê³ ë¦¬ ë²ˆí˜¸
+		add_Info_No  -- ì¶”ê°€ì •ë³´ ë²ˆí˜¸
 	);
 
--- Ãß°¡Á¤º¸ ³»¿ë
+-- ì¶”ê°€ì •ë³´ ë‚´ìš©
 CREATE TABLE addContent (
 		H_No INTEGER NOT NULL,
 		add_Con_No INTEGER NOT NULL,
@@ -57,15 +57,15 @@ CREATE TABLE addContent (
 		add_Info_No INTEGER NULL
 );
 
--- Ãß°¡Á¤º¸ ³»¿ë
+-- ì¶”ê°€ì •ë³´ ë‚´ìš©
 ALTER TABLE addContent
-	ADD CONSTRAINT PK_addContent -- Ãß°¡Á¤º¸ ³»¿ë ±âº»Å°
+	ADD CONSTRAINT PK_addContent -- ì¶”ê°€ì •ë³´ ë‚´ìš© ê¸°ë³¸í‚¤
 	PRIMARY KEY (
-		H_No,      -- ¹°Ç° ¹øÈ£
-		add_Con_No  -- ³»¿ë ¹øÈ£
+		H_No,      -- ë¬¼í’ˆ ë²ˆí˜¸
+		add_Con_No  -- ë‚´ìš© ë²ˆí˜¸
 	);
 
--- »ç¿ëÀÚ
+-- ì‚¬ìš©ìž
 CREATE TABLE userInfo (
 		no INTEGER NOT NULL,
 		name VARCHAR(20) NOT NULL,
@@ -75,51 +75,51 @@ CREATE TABLE userInfo (
 		gender VARCHAR(10) NULL
 );
 
--- »ç¿ëÀÚ
+-- ì‚¬ìš©ìž
 ALTER TABLE user
-	ADD CONSTRAINT PK_user -- »ç¿ëÀÚ ±âº»Å°
+	ADD CONSTRAINT PK_user -- ì‚¬ìš©ìž ê¸°ë³¸í‚¤
 	PRIMARY KEY (
-		no -- ¹øÈ£
+		no -- ë²ˆí˜¸
 	);
 
--- ¹°Ç°¸®½ºÆ®
+-- ë¬¼í’ˆë¦¬ìŠ¤íŠ¸
 ALTER TABLE HomeList
-	ADD CONSTRAINT FK_Categorie_TO_HomeList -- Ä«Å×°í¸® -> ¹°Ç°¸®½ºÆ®
+	ADD CONSTRAINT FK_Categorie_TO_HomeList -- ì¹´í…Œê³ ë¦¬ -> ë¬¼í’ˆë¦¬ìŠ¤íŠ¸
 	FOREIGN KEY (
-		CKTE_NO -- Ä«Å×°í¸® ¹øÈ£
+		CKTE_NO -- ì¹´í…Œê³ ë¦¬ ë²ˆí˜¸
 	)
-	REFERENCES Categorie ( -- Ä«Å×°í¸®
-		CKTE_NO -- Ä«Å×°í¸® ¹øÈ£
+	REFERENCES Categorie ( -- ì¹´í…Œê³ ë¦¬
+		CKTE_NO -- ì¹´í…Œê³ ë¦¬ ë²ˆí˜¸
 	);
 
--- Ãß°¡ Á¤º¸
+-- ì¶”ê°€ ì •ë³´
 ALTER TABLE addInfo
-	ADD CONSTRAINT FK_Categorie_TO_addInfo -- Ä«Å×°í¸® -> Ãß°¡ Á¤º¸
+	ADD CONSTRAINT FK_Categorie_TO_addInfo -- ì¹´í…Œê³ ë¦¬ -> ì¶”ê°€ ì •ë³´
 	FOREIGN KEY (
-		CKTE_NO -- Ä«Å×°í¸® ¹øÈ£
+		CKTE_NO -- ì¹´í…Œê³ ë¦¬ ë²ˆí˜¸
 	)
-	REFERENCES Categorie ( -- Ä«Å×°í¸®
-		CKTE_NO -- Ä«Å×°í¸® ¹øÈ£
+	REFERENCES Categorie ( -- ì¹´í…Œê³ ë¦¬
+		CKTE_NO -- ì¹´í…Œê³ ë¦¬ ë²ˆí˜¸
 	);
 
--- Ãß°¡Á¤º¸ ³»¿ë
+-- ì¶”ê°€ì •ë³´ ë‚´ìš©
 ALTER TABLE addContent
-	ADD CONSTRAINT FK_HomeList_TO_addContent -- ¹°Ç°¸®½ºÆ® -> Ãß°¡Á¤º¸ ³»¿ë
+	ADD CONSTRAINT FK_HomeList_TO_addContent -- ë¬¼í’ˆë¦¬ìŠ¤íŠ¸ -> ì¶”ê°€ì •ë³´ ë‚´ìš©
 	FOREIGN KEY (
-		H_No -- ¹°Ç° ¹øÈ£
+		H_No -- ë¬¼í’ˆ ë²ˆí˜¸
 	)
-	REFERENCES HomeList ( -- ¹°Ç°¸®½ºÆ®
-		H_No -- ¹°Ç° ¹øÈ£
+	REFERENCES HomeList ( -- ë¬¼í’ˆë¦¬ìŠ¤íŠ¸
+		H_No -- ë¬¼í’ˆ ë²ˆí˜¸
 	);
 
--- Ãß°¡Á¤º¸ ³»¿ë
+-- ì¶”ê°€ì •ë³´ ë‚´ìš©
 ALTER TABLE addContent
-	ADD CONSTRAINT FK_addInfo_TO_addContent -- Ãß°¡ Á¤º¸ -> Ãß°¡Á¤º¸ ³»¿ë
+	ADD CONSTRAINT FK_addInfo_TO_addContent -- ì¶”ê°€ ì •ë³´ -> ì¶”ê°€ì •ë³´ ë‚´ìš©
 	FOREIGN KEY (
-		CKTE_NO,    -- Ä«Å×°í¸® ¹øÈ£
-		add_Info_No  -- Ãß°¡Á¤º¸ ¹øÈ£
+		CKTE_NO,    -- ì¹´í…Œê³ ë¦¬ ë²ˆí˜¸
+		add_Info_No  -- ì¶”ê°€ì •ë³´ ë²ˆí˜¸
 	)
-	REFERENCES addInfo ( -- Ãß°¡ Á¤º¸
-		CKTE_NO,    -- Ä«Å×°í¸® ¹øÈ£
-		add_Info_No  -- Ãß°¡Á¤º¸ ¹øÈ£
+	REFERENCES addInfo ( -- ì¶”ê°€ ì •ë³´
+		CKTE_NO,    -- ì¹´í…Œê³ ë¦¬ ë²ˆí˜¸
+		add_Info_No  -- ì¶”ê°€ì •ë³´ ë²ˆí˜¸
 	);
