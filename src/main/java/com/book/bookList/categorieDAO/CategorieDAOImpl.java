@@ -2,6 +2,7 @@ package com.book.bookList.categorieDAO;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,15 @@ public class CategorieDAOImpl implements CategorieDAO{
 	
 	public int insertCategorie(CategorieDTO categorieDTO){
 		return sqlSession.insert(namespace+"insertCategorie",categorieDTO);
+	}
+
+	@Override
+	public int selectNameCheck(String cateName) {
+		return sqlSession.selectOne(namespace+"selectNameCheck",cateName);
+	}
+
+	@Override
+	public int updateUseCk(Map<String, Object> map) {
+		return sqlSession.update(namespace+"updateUseCk", map);
 	}
 }

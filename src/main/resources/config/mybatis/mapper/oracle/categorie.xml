@@ -16,7 +16,17 @@
 			values(#{cateNo},#{cateName},#{cateInfo},#{useCk})
     </insert>
 
+	<select id="selectNameCheck" parameterType="String" resultType="int">
+			select count(*) from categorie where CATE_NAME=#{name}
+	</select>
 	
+	<update id="updateUseCk" parameterType="map" >
+			update categorie
+			set USE_CK =
+				<if test='useCk=="n"'>'y'</if>
+				<if test='useCk=="y"'>'n'</if>
+			where CATE_NO=#{cateNo}
+	</update>
 </mapper>
 
 

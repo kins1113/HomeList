@@ -1,6 +1,8 @@
 package com.book.bookList.addController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.book.bookList.categorieDAO.CategorieService;
 import com.book.bookList.categorieDTO.CategorieDTO;
@@ -51,5 +55,35 @@ public class AddCategorieController {
 		logger.info("카테고리 추가 성공여부  insertCK= "+insertCK);
 		
 		return "redirect:/add/selectCategorie.do";
+	}
+	
+	@RequestMapping(value="/add/nameCheck.do", method=RequestMethod.POST)
+	@ResponseBody
+	public int nameCheck(@RequestParam String cateName){
+		logger.info("nameCheck.do  파라미터 cateName={}",cateName);
+		return categorieService.selectNameCheck(cateName);
+	}
+	
+	@RequestMapping(value="/inc/selectCategorie.do", method=RequestMethod.POST)
+	@ResponseBody
+	public List<CategorieDTO> SelectCategorieAjax(){
+		logger.info("SelectCategorieAjax 입니다.");
+		List<CategorieDTO> cateListAjax= categorieService.selectAllCategorie();
+		logger.info("cateListAjax.size() = {}",cateListAjax.size());
+		return cateListAjax;
+	}
+	
+	@RequestMapping("/add/cateUserChange.do")
+	@ResponseBody
+	public int updateCateUseCk(@RequestParam int cateNo,
+							   @RequestParam String useCk){
+		logger.info("ajax 카테고리 useCk 변경하는 곳 파라미터 cateNo={}  useCk={}",cateNo,useCk);
+		//map에 넣기
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("cateNo", cateNo);
+		map.put("useCk", useCk);
+		
+		categorieService.updateUseCk(map);
+		return 1;
 	}
 }
