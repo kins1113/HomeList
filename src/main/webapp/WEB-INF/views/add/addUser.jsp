@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/inc/top.jsp"%>
-
+<script type="text/javascript">
+	$(document )
+</script>
   <!-- site content
         ================================================== -->
         <div class="s-content content">
@@ -40,25 +42,28 @@
 
                             <br>
                             
-                            <div class="alert-box alert-box--error hideit">
-                                <p>Error Message. Your Message Goes Here.</p>
-                                <i class="fa fa-times alert-box__close" aria-hidden="true"></i>
-                            </div><!-- end error -->
-                                    
-                            <div class="alert-box alert-box--success hideit">
-                                <p>Success Message. Your Message Goes Here.</p>
-                                <i class="fa fa-times alert-box__close" aria-hidden="true"></i>
-                            </div><!-- end success -->
-                                    
-                            <div class="alert-box alert-box--info hideit">
-                                <p>Info Message. Your Message Goes Here.</p>
-                                <i class="fa fa-times alert-box__close" aria-hidden="true"></i>
-                            </div><!-- end info -->
-                                    
-                            <div class="alert-box alert-box--notice hideit">
-                                <p>Notice Message. Your Message Goes Here.</p>
-                                <i class="fa fa-times alert-box__close" aria-hidden="true"></i>
-                            </div><!-- end notice -->
+                            <table>
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Location</th>
+                                            <th>Gender</th>
+                                            <th>BirthDay</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <c:forEach items="${UserInfolist }" var="UserDTO"  >
+                                         <tr>
+                                            <td>${UserDTO.name }</td>
+                                            <td>${UserDTO.location }</td>
+                                            <td>${UserDTO.gender }</td>
+                                            <td>${UserDTO.birthday }</td>
+                                        </tr>
+                                        </c:forEach>
+                                       
+                                       
+                                        </tbody>
+                                </table>
                             </div>
                     </div> <!-- end row -->
  		</section>

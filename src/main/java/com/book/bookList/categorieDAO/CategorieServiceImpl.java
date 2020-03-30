@@ -1,6 +1,7 @@
 package com.book.bookList.categorieDAO;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,16 @@ public class CategorieServiceImpl implements CategorieService{
 	@Override
 	public int insertCategorie(CategorieDTO categorieDTO) {
 		return categorieDAO.insertCategorie(categorieDTO);
+	}
+
+	@Override
+	public int selectNameCheck(String cateName) {
+		return categorieDAO.selectNameCheck(cateName);
+	}
+
+	@Override
+	public int updateUseCk(Map<String, Object> map) {
+		return categorieDAO.updateUseCk(map);
 	}
 
 }

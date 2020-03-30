@@ -21,9 +21,9 @@ public class IndexController {
 	
 	@RequestMapping(value="/index.do")
 	public String indexShow(Model model){
-		 List<HomeListDTO> list =homeListService.selectAllHomeList();
+		/* List<HomeListDTO> list =homeListService.selectAllHomeList();
 		 logger.info("homeList의 list.size={}",list.size());
-		System.out.println("list.size = "+list.size());
+		System.out.println("list.size = "+list.size());*/
 	
 		return "index";
 	}

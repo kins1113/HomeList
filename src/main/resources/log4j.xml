@@ -21,7 +21,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.ez.peoplejob">
+	<logger name="com.book.bookList">
 		<level value="info" />
 	</logger>
 	

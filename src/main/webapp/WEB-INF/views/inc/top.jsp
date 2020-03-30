@@ -35,6 +35,31 @@
     <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/resources/assets/images/favicon-16x16.png">
     <link rel="manifest" href="${pageContext.request.contextPath}/resources/assets/site.webmanifest">
 	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+	window.onload = function(){
+			//카테고리 정보 가지고 오는 것
+			$.ajax({
+				url:"<c:url value='/inc/selectCategorie.do'/>",
+				type:"post",
+				dataType:"json",
+				success : function(data){        
+					var liArr= "";				
+					$.each(data , function(idx, val) {
+						//alert(idx +"   "+val.cateName);
+						var li ="<li><a href=/BookList/homeList.do?cateNo="+val.cateNo+">"+val.cateName+"</a></li>"
+						liArr= liArr+li;
+					});
+					$("#categorieUl").append(liArr);
+					
+				},error:function(xhr, status, error){
+					alert(status+" : "+error);
+				}
+			});//ajax
+		};
+	</script>
+<style>
+#font-color{color:#9c9a96;}
+</style>
 </head>
 <body>
   <!-- preloader
@@ -56,7 +81,7 @@
             <div class="header__top">
                 <div class="header__logo">
                     <a class="site-logo" href="${pageContext.request.contextPath}/index.do">
-                        <span>HomeList"</span>
+                        <span>HomeList</span>
                     </a>
                 </div>
 
@@ -93,17 +118,16 @@
                         </ul>
                     </li>
                     <li class="has-children">
-                        <a href="#0" title="">Categories</a>
-                        <ul class="sub-menu">
-                        <li><a href="#">여기는</a></li>
-                        <li><a href="#">카테고리</a></li>
-                        <li><a href="#">db에서</a></li>
-                        <li><a href="#">가져올</a></li>
-                        <li><a href="#">예정</a></li>
-                        <li><a href="#">입니다.</a></li>
+                        <a href="#0" title="" id="topCategories">Categories</a>
+                        <ul class="sub-menu" id="categorieUl">
                         </ul>
                     </li>
-                      <li class="current"><a href="index.html" title="">HomeList</a></li>
+                     <li class="current">
+                      	<a  href="${pageContext.request.contextPath}/homeList.do" title="">HomeList</a>
+                     </li>
+                      <li class="current">
+                      	<a  href="${pageContext.request.contextPath}//homeListTrash.do" title="">Trash</a>
+                     </li>
                     <!-- <li class="has-children">
                         <a href="#0" title="">Blog Posts</a>
                         <ul class="sub-menu">
