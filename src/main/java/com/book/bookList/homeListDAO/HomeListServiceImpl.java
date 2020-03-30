@@ -28,6 +28,7 @@ public class HomeListServiceImpl implements HomeListService{
 
 	@Override
 	public int insertHomeList(HomeListDTO dto) {
+		logger.info("서비스에서 HomeListDTO= {}",dto);
 		return homeListDAO.insertHomeList(dto);
 		
 	}
